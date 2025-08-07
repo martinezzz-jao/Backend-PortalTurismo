@@ -9,7 +9,13 @@ const contactRoutes = require('./routes/contactRoutes')
 const app = express();
  
 app.use(express.json());
- 
+
+app.use(cors({                            
+  origin: 'https://frontend-portal-turismo.vercel.app', // utilizar o link da vercel de vocês        
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true
+}));
+
 app.get('/', (req, res)=> res.send('api funcionando'))
  
 app.use('/api/users', userRoutes)
